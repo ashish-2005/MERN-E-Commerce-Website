@@ -6,10 +6,10 @@ import ProductDetails from "./pages/ProductDetails";
 
 const router = createBrowserRouter([
 
-      { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
+       { path: "/", element: <Home /> },
+       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/product/:id", element: <ProductDetails /> },
+      // { path: "/product/:id", element: <ProductDetails /> },
 ]);
 
 export default function App() {
