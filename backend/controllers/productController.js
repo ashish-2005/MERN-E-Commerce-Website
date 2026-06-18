@@ -16,22 +16,38 @@ export const createProduct = async (req, res) => {
 // Get all products
 export const getProducts = async (req, res) => {
     try {
-        const {search, category} = req.query;
+
+        const { search, category } = req.query;
 
         let filter = {};
 
         if (search) {
-            filter.title = { $regex: search, $options: 'i' }; // Case-insensitive search
+            filter.title = {
+                $regex: search,
+                $options: "i"
+            };
         }
 
         if (category) {
-            filter.category = category;
+            filter.category = {
+                $regex: category,
+                $options: "i"
+            };
         }
 
-        const products = await Product.find(filter).sort({ createdAt: -1 });
+        const products = await Product
+            .find(filter)
+            .sort({ createdAt: -1 });
+
         res.json(products);
+
     } catch (error) {
-        res.status(500).json({ message: 'Server Error', error });
+
+        res.status(500).json({
+            message: "Server Error",
+            error
+        });
+
     }
 };
 
